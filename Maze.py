@@ -2,6 +2,7 @@ import pygame as pg
 import sys
 from settings import *
 import random
+from Solve_maze import SolveMaze
 
 
 class Maze:
@@ -137,5 +138,7 @@ class Maze:
     def run(self):
         self.generate()
         self.draw_maze()
+        solve = SolveMaze(elem_maze=self.elem_list, draw=self.draw_maze)
+        solve.solve()
         while True:
             self.check_events()

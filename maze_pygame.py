@@ -1,6 +1,7 @@
 import pygame
 import random
 
+
 y = 5
 x = 5
 maze_width = x * 2 + 1
