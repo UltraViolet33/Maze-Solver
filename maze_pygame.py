@@ -87,7 +87,11 @@ def solve_maze(x, y):
 
 
     while not solve:
+        print("x ",x)
+        print("y ", y)
         elem_list[x][y] = 5
+        pygame.time.delay(50)  # Add a small delay to visualize the final maze
+        draw_maze()
         if x == 19 and y == 19:
             solve = True
             return True
@@ -95,12 +99,10 @@ def solve_maze(x, y):
         # pygame.display.update()
 
         
-        print("x ",x)
-        print("y ", y)
+        
 
           # Mark as visited
-        pygame.time.delay(50)  # Add a small delay to visualize the final maze
-        draw_maze()
+        
 
         possibles_moves = check_valid_moves(x, y)
         print(possibles_moves)
