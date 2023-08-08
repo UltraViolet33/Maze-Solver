@@ -2,6 +2,10 @@ import random
 from settings import *
 import pygame as pg
 
+from util import Node, StackFrontier
+
+
+
 
 class SolveMaze:
     def __init__(self, elem_maze, draw):
@@ -13,8 +17,8 @@ class SolveMaze:
         self.maze_height = MAZE_HEIGHT * 2 + 1
         self.solve_path = []
         self.is_solve = False
-        self.goal_x = 19
-        self.goal_y = 19
+        self.goal_x = self.maze_width - 2
+        self.goal_y = self.maze_height - 2
         self.direction = 0
 
     def solve(self):

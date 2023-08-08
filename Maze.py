@@ -3,6 +3,7 @@ import sys
 from settings import *
 import random
 from Solve_maze import SolveMaze
+from SolveDFS import SolveDFS
 
 
 class Maze:
@@ -21,6 +22,8 @@ class Maze:
         self.direction = 0
         self.path_list = []
         self.zero_amount = MAZE_HEIGHT * MAZE_WIDTH
+        self.goal_x = self.maze_width - 2
+        self.goal_y = self.maze_height - 2
 
     def generate(self):
         for i in range(0, self.maze_width):
@@ -122,10 +125,10 @@ class Maze:
                 elif self.elem_list[y][x] in [2, 3]:
                     color = (255, 255, 255)  # Empty cell
                 elif self.elem_list[y][x] == 5:
-                    color = (255, 255, 0)  # Solution path cell
+                    color = (0, 255, 0)  # Solution path cell
 
                 # Goal cell
-                if x == 19 and y == 19:
+                if x == self.goal_x and y == self.goal_y:
                     color = (255, 0, 0)
 
                 pg.draw.rect(
@@ -136,9 +139,15 @@ class Maze:
         pg.display.flip()
 
     def run(self):
+        print(self.maze_width)
+        print(self.maze_height)
+
         self.generate()
         self.draw_maze()
-        solve = SolveMaze(elem_maze=self.elem_list, draw=self.draw_maze)
+        # solve = SolveMaze(elem_maze=self.elem_list, draw=self.draw_maze)
+        solve = SolveDFS(elem_maze=self.elem_list, draw=self.draw_maze)
+        # solve = SolveMaze(ele)
+
         solve.solve()
         while True:
             self.check_events()
