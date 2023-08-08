@@ -3,7 +3,10 @@ import sys
 from settings import *
 import random
 from Solve_maze import SolveMaze
-from SolveDFS import SolveDFS
+from Solve import Solve
+from SolveGBFS import SolveGBFS
+
+from util import QueueFrontier, StackFrontier, Frontier
 
 
 class Maze:
@@ -139,15 +142,13 @@ class Maze:
         pg.display.flip()
 
     def run(self):
-        print(self.maze_width)
-        print(self.maze_height)
-
         self.generate()
         self.draw_maze()
-        # solve = SolveMaze(elem_maze=self.elem_list, draw=self.draw_maze)
-        solve = SolveDFS(elem_maze=self.elem_list, draw=self.draw_maze)
-        # solve = SolveMaze(ele)
-
+        solve = Solve(
+            frontier=QueueFrontier(), elem_maze=self.elem_list, draw=self.draw_maze
+        )
+        # solve = SolveDFS(elem_maze=self.elem_list, draw=self.draw_maze)
+        # solve = SolveGBFS(frontier=Frontier(), elem_maze=self.elem_list, draw=self.draw_maze)
         solve.solve()
         while True:
             self.check_events()

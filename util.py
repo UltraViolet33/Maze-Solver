@@ -1,11 +1,12 @@
-class Node():
+class Node:
     def __init__(self, state, parent, action):
         self.state = state
         self.parent = parent
         self.action = action
 
 
-class StackFrontier():
+class Frontier():
+
     def __init__(self):
         self.frontier = []
 
@@ -17,7 +18,22 @@ class StackFrontier():
 
     def empty(self):
         return len(self.frontier) == 0
+        
+    def get_len(self):
+        return len(self.frontier)
+    
+    def remove(self, index):
+        if self.empty():
+            raise Exception("empty frontier")
+        else:
+            # node = self.frontier[index]
+            # self.frontier = self.frontier[:-1]
+            del self.frontier[index]
+            # return node
 
+
+class StackFrontier(Frontier):
+    
     def remove(self):
         if self.empty():
             raise Exception("empty frontier")
@@ -25,3 +41,17 @@ class StackFrontier():
             node = self.frontier[-1]
             self.frontier = self.frontier[:-1]
             return node
+        
+
+class QueueFrontier(Frontier):
+
+    def remove(self):
+        if self.empty():
+            raise Exception("empty frontier")
+        else:
+            node = self.frontier[0]
+            self.frontier = self.frontier[1:]
+            return node
+        
+
+
