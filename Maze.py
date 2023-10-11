@@ -142,14 +142,14 @@ class Maze:
 
     def run(self, method):
         print(method)
-        if method == "DFS":
+        if method == "-DFS":
             solve = Solve(frontier=StackFrontier(), elem_maze=self.elem_list, draw=self.draw_maze)
-        elif method == "BFS":
+        elif method == "-BFS":
             solve = Solve(frontier=QueueFrontier(), elem_maze=self.elem_list, draw=self.draw_maze)
-        elif method == "GBFS":
+        elif method == "-GBFS":
             solve = SolveGBFS(frontier=Frontier(), elem_maze=self.elem_list, draw=self.draw_maze)
         else:
-            print("usage : -DFS -BFS, -GBFS")
+            print("usage: python main.py -DFS | -BFS | -GBFS")
             exit()
 
 
