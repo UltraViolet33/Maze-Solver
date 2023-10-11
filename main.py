@@ -5,4 +5,4 @@ from Maze import Maze
 
 if __name__ == "__main__":
     maze = Maze()
-    maze.run()
+    maze.run(sys.argv[1])

@@ -2,7 +2,6 @@ import pygame as pg
 import sys
 from settings import *
 import random
-from Solve_maze import SolveMaze
 from Solve import Solve
 from SolveGBFS import SolveGBFS
 
@@ -141,14 +140,21 @@ class Maze:
                 )
         pg.display.flip()
 
-    def run(self):
+    def run(self, method):
+        print(method)
+        if method == "DFS":
+            solve = Solve(frontier=StackFrontier(), elem_maze=self.elem_list, draw=self.draw_maze)
+        elif method == "BFS":
+            solve = Solve(frontier=QueueFrontier(), elem_maze=self.elem_list, draw=self.draw_maze)
+        elif method == "GBFS":
+            solve = SolveGBFS(frontier=Frontier(), elem_maze=self.elem_list, draw=self.draw_maze)
+        else:
+            print("usage : -DFS -BFS, -GBFS")
+            exit()
+
+
         self.generate()
         self.draw_maze()
-        solve = Solve(
-            frontier=QueueFrontier(), elem_maze=self.elem_list, draw=self.draw_maze
-        )
-        # solve = SolveDFS(elem_maze=self.elem_list, draw=self.draw_maze)
-        # solve = SolveGBFS(frontier=Frontier(), elem_maze=self.elem_list, draw=self.draw_maze)
         solve.solve()
         while True:
             self.check_events()
