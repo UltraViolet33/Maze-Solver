@@ -1,7 +1,6 @@
 
+# Maze solving algos
 
-# DFS
+Maze generators and solver using breadth first search, depth first search or greedy best first search algorithms.
 
-# BFS
-
-# GBFS
+Made with Pygame.
