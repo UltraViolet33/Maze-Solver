@@ -1,6 +1,6 @@
 
 # Maze solving algos
 
-Maze generators and solver using breadth first search, depth first search or greedy best first search algorithms.
+Maze generator and solver using breadth first search, depth first search or greedy best first search algorithms.
 
 Made with Pygame.
